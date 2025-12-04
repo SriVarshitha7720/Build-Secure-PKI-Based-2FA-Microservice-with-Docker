@@ -1,0 +1,7 @@
+# Ensure these lines are present
+fastapi
+uvicorn
+cryptography
+pyotp
+
+# ... other requirements like pyotp

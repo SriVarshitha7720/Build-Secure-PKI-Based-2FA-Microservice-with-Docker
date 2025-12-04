@@ -1,0 +1,19 @@
+# Temporary and Sensitive Files to IGNORE
+
+# Encrypted seed (sensitive data from API call)
+encrypted_seed.txt
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Local data folders (to prevent committing data that should be in a volume)
+data/
+local_data/
+
+# Environment files
+.env
+
+# IDE files
+.vscode/
+.idea/

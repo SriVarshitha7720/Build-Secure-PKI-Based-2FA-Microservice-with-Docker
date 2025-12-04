@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    # 1. Build Configuration
+    build:
+      context: .
+    
+    # Optional: Assign a recognizable name to the container
+    container_name: pki_2fa_microservice
+    
+    # 2. Port Mapping
+    ports:
+      # Map Host Port 8080 to Container Port 8080
+      - "8080:8080"
+      
+    # 3. Environment Variables
+    environment:
+      # CRITICAL: Ensures time-based operations (like TOTP) use UTC.
+      TZ: UTC 
+      
+    # 4. Volume Mounts (Persistence and Key Access)
+    volumes:
+      # Named Volume Mounts (for persistence):
+      # The persistent Docker volume 'seed-data' is mapped to /data
+      - seed-data:/data
+      # The persistent Docker volume 'cron-output' is mapped to /cron
+      - cron-output:/cron
+      
+      # Bind Mounts (for local development key access, Read-Only):
+      # Note: These paths are relative to your project root (context: .)
+      - ./student_private.pem:/app/student_private.pem:ro
+      - ./student_public.pem:/app/student_public.pem:ro
+      - ./instructor_public.pem:/app/instructor_public.pem:ro
+      
+    # 5. Restart Policy
+    restart: unless-stopped
+
+# 6. Global Volume Definitions
+volumes:
+  seed-data:
+  cron-output:

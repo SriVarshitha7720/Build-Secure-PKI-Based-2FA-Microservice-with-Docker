@@ -159,7 +159,7 @@ def generate_commit_proof():
 
     # --- Output ---
     print("\n=============================================")
-    print("        ✅ COMMIT PROOF GENERATED ✅        ")
+    print("        COMMIT PROOF GENERATED        ")
     print("=============================================")
     print(f"Commit Hash: {commit_hash}")
     print("\nEncrypted Signature (Base64 Proof):")

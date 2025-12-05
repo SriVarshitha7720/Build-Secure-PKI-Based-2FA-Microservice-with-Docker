@@ -13,7 +13,6 @@ from datetime import datetime, timezone
 SEED_PATH = "/data/seed.txt" 
 # The log file path where the output will be redirected by cron
 LOG_FILE_PATH = "/cron/last_code.txt" 
-
 def log_current_totp():
     """Reads the hex seed, generates the TOTP code, and prints the result."""
     
